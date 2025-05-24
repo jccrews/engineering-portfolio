@@ -10,6 +10,10 @@ skills:
   - Image Segmentation
   - PyTorch
   - NumPy
+  - Mamba
+  - CNN
+  - Transformers
+  - U-Net
   
 
 
