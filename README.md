@@ -1,3 +1,71 @@
+To run live reload site `bundle exec jekyll serve --livereload`
+
+# Setup locally instructions 05/23/2025 Clay Crews
+# Remove existing gems
+gem cleanup
+
+# Check current Ruby version
+ruby --version
+Step 2: Use rbenv for clean Ruby management:
+bash# Install rbenv
+brew install rbenv
+
+# Install a stable Ruby version
+rbenv install 3.1.4
+rbenv global 3.1.4
+
+# Add to shell config
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+
+# Reload shell
+source ~/.zshrc
+
+# Verify
+ruby --version  # Should show 3.1.4
+which ruby      # Should show rbenv path
+Step 3: Fresh gem installation:
+bashcd easy-hardware-engineer-portfolio-template
+
+# Install bundler for this Ruby version
+gem install bundler
+
+# Clear any existing bundle config
+rm -rf .bundle
+rm Gemfile.lock
+
+# Install with specific versions
+bundle install
+Option 3: Fix Specific Version Conflicts
+If you're getting specific error messages, try:
+Create/update Gemfile with compatible versions:
+ruby# Add this to Gemfile or create one
+source "https://rubygems.org"
+
+gem "jekyll", "~> 4.3.0"
+gem "minima", "~> 2.5"
+gem "kramdown-parser-gfm"
+
+group :jekyll_plugins do
+  gem "jekyll-feed", "~> 0.12"
+  gem "jekyll-sitemap"
+end
+
+platforms :mingw, :x64_mingw, :mswin, :jruby do
+  gem "tzinfo", ">= 1", "< 3"
+  gem "tzinfo-data"
+end
+
+gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
+gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
+Then run:
+bashbundle install
+bundle exec jekyll serve
+
+
+
+
+
 # Easy Hardware Engineer Portfolio Template 
 With the growing emphasis on practical skills, more companies are looking at portfolios alongside traditional resumes when evaluating engineers in mechanical, electrical, and data science. A well-crafted portfolio can showcase your projects, technical abilities, and problem-solving approach in ways that resumes alone cannot. Check out the **demo [here](https://leea12.github.io/)**.
 

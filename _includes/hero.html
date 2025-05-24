@@ -4,7 +4,7 @@
     <div class="group">
         <div class="text">
             <h2>
-                I'm {{ site.name | split: ' ' | first }} 
+                {{site.name}} 
                 {% if site.external-links %}
                 <span class="external-links">
                     {% assign platforms = "linkedin,x-twitter,github,stackoverflow,discord,medium,threads,bluesky,instagram,youtube" | split: "," %}
@@ -70,6 +70,7 @@
             
             <h3> {{site.headline}} </h3>
             <p> {{site.description}}</p>
+            <p>{{site.description_extra}}</p>
             <div class="links">
                 <a href="#projects">
                     <i class="fa-solid fa-pen"></i>
